@@ -44,5 +44,12 @@ def answer():
     return render_template('auto_answer.html', d=d)
 
 
+@app.route('/distribution')
+def places():
+    passangers = ['Ривер Сонг', 'Амелия Понд', 'Рори Понд', 'Роуз Тайлер', 'Марта Джонс',
+                  'Джон Смит', 'Клара Освальд', 'Билл Спот', 'Донна Ноубл']
+    return render_template('distribution.html', passangers=passangers)
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
