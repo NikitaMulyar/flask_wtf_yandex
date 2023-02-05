@@ -28,5 +28,21 @@ def list_prof(list):
     return render_template('list_prof.html', list=list, user_list=user_list)
 
 
+@app.route('/answer')
+@app.route('/auto_answer')
+def answer():
+    title = 'Анкета легенды'
+    surname = 'Arataki'
+    name = 'Itto'
+    education = 'высшее'
+    profession = 'Дата саентист'
+    sex = 'male'
+    motivation = 'Хочу анализировать статистические данные о Марсе!'
+    ready = 'True'
+    d = {'Заголовок': title, 'Фамилия': surname, 'Имя': name, 'Образование': education,
+         'Профессия': profession, 'Пол': sex, 'Мотивация': motivation, 'Готовы остаться на Марсе?': ready}
+    return render_template('auto_answer.html', d=d)
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
