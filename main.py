@@ -1,7 +1,20 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, SubmitField
+from wtforms.validators import DataRequired
+
+
+class LoginForm(FlaskForm):
+    id_user = StringField('ID астронавта', validators=[DataRequired()])
+    password = PasswordField('Пароль астронавта', validators=[DataRequired()])
+    id_cap = StringField('ID капитана', validators=[DataRequired()])
+    token = PasswordField('Токен капитана', validators=[DataRequired()])
+    submit = SubmitField('Доступ')
 
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
+data = {}
 
 
 @app.route('/<title>')
@@ -49,6 +62,22 @@ def places():
     passangers = ['Ривер Сонг', 'Амелия Понд', 'Рори Понд', 'Роуз Тайлер', 'Марта Джонс',
                   'Джон Смит', 'Клара Освальд', 'Билл Спот', 'Донна Ноубл']
     return render_template('distribution.html', passangers=passangers)
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    global data
+    form = LoginForm()
+    if form.validate_on_submit():
+        data = {form.id_user.label: form.id_user.data, form.password.label: form.password.data,
+                form.id_cap.label: form.id_cap.data, form.token.label: form.token.data}
+        return redirect('/success')
+    return render_template('emergency_access.html', title='Авторизация', form=form)
+
+
+@app.route('/success')
+def ok_page():
+    return render_template('success.html', data=data, k=len(data))
 
 
 if __name__ == '__main__':
