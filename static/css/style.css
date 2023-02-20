@@ -2,7 +2,7 @@ h4{
   color: rgb(150, 150, 150);
 }
 
-h3{
+h2, h3{
   display: table;
   margin: 0 auto;
 }
@@ -24,6 +24,18 @@ li{
 img{
   display: table;
   margin: 0 auto;
+}
+
+table{
+  margin: 0 auto;
+  text-align: center;
+  vertical-align: middle;
+  max-width: 960px;
+}
+
+th{
+    min-width: 480px;
+    max-width: 480px;
 }
 
 #logo{

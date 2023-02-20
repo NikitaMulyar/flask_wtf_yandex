@@ -80,5 +80,10 @@ def ok_page():
     return render_template('success.html', data=data, k=len(data))
 
 
+@app.route('/table/<gender>/<int:age>')
+def table(gender, age):
+    return render_template('table.html', gender=gender, age=age)
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')

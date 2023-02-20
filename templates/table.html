@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br/>
+<h2>Оформление каюты</h2>
+{% set img = "" %}
+{% if age >= 21 %}
+{% set img = "/static/images/adult.jpeg" %}
+{% else %}
+{% set img = "/static/images/kid.webp" %}
+{% endif %}
+{% set clr = "" %}
+{% if gender == "male" %}
+{% if age >= 21 %}
+{% set clr = "#182e86" %}
+{% else %}
+{% set clr = "#627cb3" %}
+{% endif %}
+{% else %}
+{% if age >= 21 %}
+{% set clr = "#91136d" %}
+{% else %}
+{% set clr = "#df544f" %}
+{% endif %}
+{% endif %}
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Цвет стен</th>
+      <th scope="col">Эмблема</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="background-color: {{ clr }}"></td>
+      <td><img src={{ img }} height=270 width=480 alt="здесь должна была быть картинка, но не нашлась"/></td>
+    </tr>
+  </tbody>
+</table>
+{% endblock %}
