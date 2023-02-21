@@ -42,3 +42,34 @@ th{
   margin-left: 20px;
   float: left;
 }
+
+.carousel-inner{
+display: table;
+  margin: 0 auto;
+ max-height: 40px;
+ max-width: 640px;
+}
+
+a{
+  color: #4a0000;
+}
+
+.carousel-control-next-icon:after
+{
+  content: '>';
+  font-size: 55px;
+  color: red;
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 55px;
+  color: red;
+}
+
+.form_ya{
+display: table;
+  margin: 0 auto;
+  border: 2px solid black;
+  border-radius: 10px;
+}

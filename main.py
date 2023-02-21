@@ -1,7 +1,12 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, request
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired
+import os
+
+
+DATA = ['static/images/doc1.jpeg', 'static/images/doc2.jpeg', 'static/images/doc3.jpeg',
+        'static/images/doc4.jpeg']
 
 
 class LoginForm(FlaskForm):
@@ -15,6 +20,7 @@ class LoginForm(FlaskForm):
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 data = {}
+app.config['UPLOAD_FOLDER'] = 'static/images/'
 
 
 @app.route('/<title>')
@@ -83,6 +89,17 @@ def ok_page():
 @app.route('/table/<gender>/<int:age>')
 def table(gender, age):
     return render_template('table.html', gender=gender, age=age)
+
+
+@app.route('/galery', methods=['GET', 'POST'])
+def galery():
+    global DATA
+    if request.method == 'POST':
+        f = request.files['File']
+        f.save(app.config['UPLOAD_FOLDER'] + f.filename.replace(' ', '_'))
+        DATA.append(app.config['UPLOAD_FOLDER'] + f.filename.replace(' ', '_'))
+        DATA = list(set(DATA))
+    return render_template('carousel2.html', images=DATA, range=list(range(len(DATA))))
 
 
 if __name__ == '__main__':
