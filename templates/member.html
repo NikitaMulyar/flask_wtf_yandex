@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% set id_elem = [0, 1, 2, 3]|random %}
+{% set member = data[id_elem] %}
+{% set url_photo = member["photo"] %}
+{% set info = (member["specialities"]|sort)|join(", ") %}
+<div id="main">
+<h3>{{ member["name"] }} {{ member["surname"] }}</h3><br/>
+<img src={{ url_photo }} height=270 width=480 alt="здесь должна была быть картинка, но не нашлась"/><br/>
+<p id="spec">{{ info }}</p>
+</div>
+{% endblock %}

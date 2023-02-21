@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, request
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired
-import os
+import json
 
 
 DATA = ['static/images/doc1.jpeg', 'static/images/doc2.jpeg', 'static/images/doc3.jpeg',
@@ -100,6 +100,13 @@ def galery():
         DATA.append(app.config['UPLOAD_FOLDER'] + f.filename.replace(' ', '_'))
         DATA = list(set(DATA))
     return render_template('carousel2.html', images=DATA, range=list(range(len(DATA))))
+
+
+@app.route('/member')
+def member_info():
+    file = open("templates/crew.json", mode='r')
+    data = json.load(file)
+    return render_template('member.html', data=data)
 
 
 if __name__ == '__main__':

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Доктор",
+    "surname": "КТО?",
+    "photo": "https://scifi-tv.ru/images/series/Doctor_Who_12/S02E07_The_Zygon_Invasion_9.jpg",
+    "specialities": ["главный механик", "борт-инженер", "друг ТАРДИС"]
+  },
+  {
+    "name": "Ривер",
+    "surname": "Сонг",
+    "photo": "https://doctorwhoworlduk.com/wp-content/uploads/2017/01/ns6ep7x.jpg",
+    "specialities": ["юмористка", "борт-механик", "всезнающая"]
+  },
+  {
+    "name": "Клара",
+    "surname": "Освальд",
+    "photo": "https://mobimg.b-cdn.net/v3/fetch/f3/f33918b6131aa29345615f4c520aece4.jpeg",
+    "specialities": ["программист", "дух команды", "специалист по суфле"]
+  },
+  {
+    "name": "Амелия",
+    "surname": "Понд",
+    "photo": "https://doctorwhoworlduk.com/wp-content/uploads/2017/01/amydwifea-Large.jpg",
+    "specialities": ["девочка, которая ждала", "пилот", "специалист по устройству ТАРДИС"]
+  }
+]

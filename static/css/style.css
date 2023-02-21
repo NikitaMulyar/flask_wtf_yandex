@@ -73,3 +73,8 @@ display: table;
   border: 2px solid black;
   border-radius: 10px;
 }
+
+#spec{
+display: table;
+  margin: 0 auto;
+}
